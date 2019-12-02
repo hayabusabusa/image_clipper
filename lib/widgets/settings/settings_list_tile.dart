@@ -17,21 +17,23 @@ class SettingsListTile extends StatelessWidget {
       case SettingsCellType.about:
         return ListTile(
           title: Text('このアプリについて'),
-          leading: Icon(Icons.info, color: Colors.black,),
+          leading: Icon(Icons.info, color: Colors.transparent,),
           onTap: () {},
         );
       // - OSS
       case SettingsCellType.oss:
         return ListTile(
           title: Text('OSSライセンス'),
-          leading: Icon(Icons.info, color: Colors.black,),
-          onTap: () {},
+          leading: Icon(Icons.info, color: Colors.transparent,),
+          onTap: () {
+            showLicensePage(context: context);
+          },
         );
       // - Version
       case SettingsCellType.version:
         return ListTile(
           title: Text('バージョン'),
-          //leading: Icon(Icons.info, color: Colors.black,),
+          leading: Icon(Icons.info, color: Colors.transparent,),
           trailing: Text('0.0.1'),
         );
       // - Remove all

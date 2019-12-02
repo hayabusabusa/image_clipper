@@ -4,7 +4,7 @@ import 'package:image_clipper/widgets/settings/settings_widgets.dart';
 
 class SettingsScreen extends StatelessWidget {
   final List<SettingsSectionModel> _sections = [
-    SettingsSectionModel(title: 'アプリについて', rows: [SettingsCellType.version, SettingsCellType.about, SettingsCellType.oss]),
+    SettingsSectionModel(title: 'アプリについて', rows: [SettingsCellType.about, SettingsCellType.oss, SettingsCellType.version]),
     SettingsSectionModel(title: 'データについて', rows: [SettingsCellType.removeAll]),
   ];
 
