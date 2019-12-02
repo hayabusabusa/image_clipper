@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:image_clipper/screens/screens.dart';
 import 'package:image_clipper/models/settings/settings_models.dart';
 
 class SettingsListTile extends StatelessWidget {
@@ -18,7 +19,11 @@ class SettingsListTile extends StatelessWidget {
         return ListTile(
           title: Text('このアプリについて'),
           leading: Icon(Icons.info, color: Colors.transparent,),
-          onTap: () {},
+          onTap: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(builder: (context) => WebViewScreen(url: 'https://github.com/hayabusabusa/image_clipper',))
+            );
+          },
         );
       // - OSS
       case SettingsCellType.oss:
