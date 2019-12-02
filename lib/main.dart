@@ -4,6 +4,8 @@ import 'package:image_clipper/screens/screens.dart';
 
 void main() => runApp(App(sharedPreferenceRepository: SharedPreferencesRepository(),));
 
+// MARK: - App
+
 class App extends StatelessWidget {
   final SharedPreferencesRepository sharedPreferenceRepository;
 
@@ -17,6 +19,10 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Clipper',
+      theme: ThemeData(
+        // - Colors
+        primaryColor: Colors.white,
+      ),
       home: HomeScreen(repository: sharedPreferenceRepository,),
     );
   }

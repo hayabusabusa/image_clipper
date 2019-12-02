@@ -4,6 +4,8 @@ import 'package:image_clipper/repository/repositories.dart';
 import 'package:image_clipper/screens/screens.dart';
 import 'package:image_clipper/widgets/home/home_widgets.dart';
 
+// MARK: - Stateful widget
+
 class HomeScreen extends StatefulWidget {
   final SharedPreferencesRepository repository;
 
@@ -17,8 +19,12 @@ class HomeScreen extends StatefulWidget {
   State<StatefulWidget> createState() => _HomeScreenState();
 }
 
+// MARK: - State
+
 class _HomeScreenState extends State<HomeScreen> {
   List<String> _imageURLs;
+
+  // MARK: Lifecycle
 
   @override
   void initState() {
@@ -32,6 +38,8 @@ class _HomeScreenState extends State<HomeScreen> {
       _imageURLs = storedImageURLs;
     });
   }
+
+  // MARK: Build widget
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +59,8 @@ class _HomeScreenState extends State<HomeScreen> {
         ? HomeGridEmptyWidget()
         : HomeGridView(imageURLs: _imageURLs,),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
+        child: Icon(Icons.add, color: Colors.black,),
+        backgroundColor: Colors.white,
         onPressed: () {
           showDialog(context: context, builder: (context) => HomeDialog(onPressedOK: (text) {
             if (text.contains('http')) {
