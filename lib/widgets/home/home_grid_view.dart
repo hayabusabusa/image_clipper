@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 class HomeGridView extends StatelessWidget {
@@ -12,16 +13,16 @@ class HomeGridView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.count(
+    return StaggeredGridView.countBuilder(
       crossAxisCount: 2,
-      children: imageURLs.map((imageURL) {
-        return FadeInImage.memoryNetwork(
-          fit: BoxFit.cover,
-          image: imageURL,
-          placeholder: kTransparentImage,
-          fadeInCurve: Curves.easeInOut,
-        );
-      } ).toList(),
+      itemCount: imageURLs.length,
+      staggeredTileBuilder: (index) => StaggeredTile.count(1, index.isEven ? 1 : 0.5),
+      itemBuilder: (context, index) => FadeInImage.memoryNetwork(
+        fit: BoxFit.cover,
+        image: imageURLs[index],
+        placeholder: kTransparentImage,
+        fadeInCurve: Curves.easeInOut,
+      ),
     );
   }
 }

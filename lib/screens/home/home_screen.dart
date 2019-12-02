@@ -38,12 +38,14 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Home'),
-        leading: IconButton(
+        actions: <Widget>[
+          IconButton(
           icon: Icon(Icons.settings), 
           onPressed: () { 
             Navigator.of(context).push(MaterialPageRoute(builder: (context) => SettingsScreen())); 
           },
         ),
+        ],
       ),
       body: _imageURLs == null
         ? HomeGridEmptyWidget()
