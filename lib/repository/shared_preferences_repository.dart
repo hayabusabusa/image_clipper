@@ -24,4 +24,9 @@ class SharedPreferencesRepository {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     return prefs.getStringList(kImageURLArrayKey);
   }
+
+  Future<void> removeAll() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    return await prefs.remove(kImageURLArrayKey);
+  }
 }
