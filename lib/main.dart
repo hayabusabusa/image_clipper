@@ -26,7 +26,7 @@ class App extends StatelessWidget {
       ),
       home: HomeScreen(repository: sharedPreferenceRepository,),
       routes: {
-        RouteKeys.settings: (context) => SettingsScreen(),
+        RouteKeys.settings: (context) => SettingsScreen(repository: sharedPreferenceRepository,),
       },
     );
   }

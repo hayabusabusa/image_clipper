@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:image_clipper/screens/screens.dart';
+import 'package:image_clipper/widgets/settings/settings_widgets.dart';
 import 'package:image_clipper/models/settings/settings_models.dart';
 
 class SettingsListTile extends StatelessWidget {
@@ -50,9 +51,30 @@ class SettingsListTile extends StatelessWidget {
           ),
           leading: Icon(Icons.delete, color: Colors.red[300],),
           onTap: () {
-            // TODO: ここに repository の処理を持ってきたい
+            // ここに repository の処理を持ってきたい
             // でも上位のWidgetが持つrepositoryをここにコンストラクタで伝達してくるのは辛い...
             // -> 今こそ InheritedWidget を使う時
+            var repository = SettingsInheritedWidget.of(context, listen: false).repository;
+            showDialog(
+              context: context,
+              builder: (context) => AlertDialog(
+                title: Text(''),
+                content: Text('全てのデータを削除します。\n本当によろしいですか？'),
+                actions: <Widget>[
+                  FlatButton(
+                    child: Text('キャンセル'),
+                    onPressed: () { Navigator.of(context).pop(); },
+                  ),
+                  FlatButton(
+                    child: Text('削除', style: TextStyle(color: Colors.red[300]),),
+                    onPressed: () { 
+                      repository.removeAll();
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                ],
+              )
+            );
           },
         );
       default:
