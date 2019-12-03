@@ -49,7 +49,11 @@ class SettingsListTile extends StatelessWidget {
             style: TextStyle(color: Colors.red[300]),
           ),
           leading: Icon(Icons.delete, color: Colors.red[300],),
-          onTap: () {},
+          onTap: () {
+            // TODO: ここに repository の処理を持ってきたい
+            // でも上位のWidgetが持つrepositoryをここにコンストラクタで伝達してくるのは辛い...
+            // -> 今こそ InheritedWidget を使う時
+          },
         );
       default:
         return ListTile(

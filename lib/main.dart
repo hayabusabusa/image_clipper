@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:image_clipper/models/App/app_models.dart';
 import 'package:image_clipper/repository/repositories.dart';
 import 'package:image_clipper/screens/screens.dart';
 
@@ -24,6 +25,9 @@ class App extends StatelessWidget {
         primaryColor: Colors.white,
       ),
       home: HomeScreen(repository: sharedPreferenceRepository,),
+      routes: {
+        RouteKeys.settings: (context) => SettingsScreen(),
+      },
     );
   }
 }

@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:image_clipper/models/App/app_models.dart';
 import 'package:image_clipper/repository/repositories.dart';
-import 'package:image_clipper/screens/screens.dart';
 import 'package:image_clipper/widgets/home/home_widgets.dart';
 
 // MARK: - Stateful widget
@@ -50,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
           IconButton(
           icon: Icon(Icons.settings), 
           onPressed: () { 
-            Navigator.of(context).push(MaterialPageRoute(builder: (context) => SettingsScreen())); 
+            Navigator.of(context).pushNamed(RouteKeys.settings); 
           },
         ),
         ],
