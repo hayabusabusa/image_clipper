@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:image_clipper/repository/repositories.dart';
 import 'package:image_clipper/widgets/add_clip/add_clip_widgets.dart';
+import 'package:image_clipper/widgets/dialog/dialog_widgets.dart';
 
 // MARK: - Stateful widget
 
@@ -31,17 +32,7 @@ class _AddClipScreenState extends State<AddClipScreen> {
     } else {
       showDialog(
         context: context,
-        builder: (context) => AlertDialog(
-          content: Text('URLの形式が正しくありません。'),
-          actions: <Widget>[
-            FlatButton(
-              child: Text('OK'),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            )
-          ],
-        ),
+        builder: (context) => MessageDialog(message: 'URLの形式が正しくありません。',),
       );
     }
   }
