@@ -62,12 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Icon(Icons.add, color: Colors.black,),
         backgroundColor: Colors.white,
         onPressed: () {
-          showDialog(context: context, builder: (context) => HomeDialog(onPressedOK: (text) {
-            if (text.contains('http')) {
-              widget.repository.saveImageURL(text);
-              _getImageURLs();
-            }
-          }));
+          Navigator.of(context).pushNamed(RouteKeys.addClip);
         },
       ),
     );
