@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:image_clipper/screens/screens.dart';
 import 'package:image_clipper/widgets/settings/settings_widgets.dart';
 import 'package:image_clipper/models/settings/settings_models.dart';
+import 'package:image_clipper/widgets/dialog/dialog_widgets.dart';
 
 class SettingsListTile extends StatelessWidget {
   final SettingsCellType cellType;
@@ -57,22 +58,12 @@ class SettingsListTile extends StatelessWidget {
             var repository = SettingsInheritedWidget.of(context, listen: false).repository;
             showDialog(
               context: context,
-              builder: (context) => AlertDialog(
-                title: Text(''),
-                content: Text('全てのデータを削除します。\n本当によろしいですか？'),
-                actions: <Widget>[
-                  FlatButton(
-                    child: Text('キャンセル'),
-                    onPressed: () { Navigator.of(context).pop(); },
-                  ),
-                  FlatButton(
-                    child: Text('削除', style: TextStyle(color: Colors.red[300]),),
-                    onPressed: () { 
-                      repository.removeAll();
-                      Navigator.of(context).pop();
-                    },
-                  ),
-                ],
+              builder: (context) => DeleteDialogWidget(
+                message: '全てのデータを削除します。\n本当によろしいですか？',
+                action: () {
+                  repository.removeAll();
+                  Navigator.of(context).pop();
+                },
               )
             );
           },

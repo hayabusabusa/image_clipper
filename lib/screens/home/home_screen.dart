@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:image_clipper/main.dart';
 import 'package:image_clipper/models/App/app_models.dart';
 import 'package:image_clipper/repository/repositories.dart';
 import 'package:image_clipper/widgets/home/home_widgets.dart';
@@ -20,8 +21,9 @@ class HomeScreen extends StatefulWidget {
 }
 
 // MARK: - State
+// RouteAware: https://qiita.com/najeira/items/89d8014a30102204babb
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends State<HomeScreen> with RouteAware {
   List<String> _imageURLs;
 
   // MARK: Lifecycle
@@ -31,6 +33,27 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
     _getImageURLs();
   }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    routeObserver.subscribe(this, ModalRoute.of(context));
+  }
+
+  @override
+  void dispose() {
+    routeObserver.unsubscribe(this);
+    super.dispose();
+  }
+
+  // MARK: Transition event
+
+  @override
+  void didPopNext() {
+    _getImageURLs();
+  }
+
+  // MARK: Private methods
   
   Future<void> _getImageURLs() async {
     var storedImageURLs = await widget.repository.getImageURLs();
