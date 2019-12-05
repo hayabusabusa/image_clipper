@@ -16,6 +16,19 @@ class SettingsListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     switch (cellType) {
+      // - About app
+      case SettingsCellType.aboutApp:
+        return ListTile(
+          title: Text('Clipper'),
+          leading: Container(
+            padding: EdgeInsets.all(8),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: Image.asset('assets/ic_clipper.png'),
+            ),
+          ),
+          trailing: Text('version 0.0.1'),
+        );
       // - About
       case SettingsCellType.about:
         return ListTile(

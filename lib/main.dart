@@ -14,7 +14,6 @@ void main() => runApp(App(sharedPreferenceRepository: SharedPreferencesRepositor
 class App extends StatelessWidget {
   final SharedPreferencesRepository sharedPreferenceRepository;
   
-
   App({
     Key key,
     @required this.sharedPreferenceRepository
